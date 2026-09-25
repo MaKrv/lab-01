@@ -155,6 +155,8 @@ ember> dump
 mk_@home-pc:~/pf/ember/sizeof$ ./sizeof
 1 4 4 8 8
 1 2
+```text
+
 | Type | Size |
 |---|---:|
 | char | 1 byte |
@@ -164,7 +166,7 @@ mk_@home-pc:~/pf/ember/sizeof$ ./sizeof
 | void* | 8 bytes |
 | std::uint8_t | 1 byte |
 | std::uint16_t | 2 bytes |
-```
+
 Висновок:
 Перевірка розмірів кожного типу показала, що 'std::uint8_t' найкраще підходить для проєкту, тому що одна клітинка пам'яті ember має займати один байт пам'яті. 'std::uint8_t' займає саме 1 байт, тоді як 'int' займає 4 байти.
 
