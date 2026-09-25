@@ -155,7 +155,7 @@ ember> dump
 mk_@home-pc:~/pf/ember/sizeof$ ./sizeof
 1 4 4 8 8
 1 2
-```text
+```
 
 | Type | Size |
 |---|---:|
