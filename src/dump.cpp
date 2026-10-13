@@ -17,7 +17,7 @@ const std::size_t BYTES_PER_LINE = 16;
 // 0x20 is space, 0x7E is '~'. Everything outside that range we show as '.'.
 static bool is_printable(Byte b) { return b >= 0x20 && b <= 0x7E; }
 
-void dump(const Memory& mem) {
+void dump(const Memory &mem) {
     // std::hex switches the stream to hexadecimal; setfill/setw pad with zeros
     // so every number is the same width and the columns line up.
     for (std::size_t row = 0; row < MEM_SIZE; row += BYTES_PER_LINE) {
@@ -74,8 +74,8 @@ void show_byte(Byte b) {
     //   65  0x41  0b01000001  'A'
     std::cout << static_cast<int>(b) << "  ";
     std::cout << "0x";
-    std::cout <<std::hex << static_cast<int>(b);
-    std::cout <<std::dec;
+    std::cout << std::hex << static_cast<int>(b);
+    std::cout << std::dec;
     std::cout << "  ";
     std::cout << "0b";
     for (int i = 7; i >= 0; --i) {
@@ -89,5 +89,5 @@ void show_byte(Byte b) {
     } else {
         std::cout << "'.'";
     }
-std::cout << "\n";
+    std::cout << "\n";
 }

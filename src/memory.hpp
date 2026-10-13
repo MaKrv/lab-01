@@ -24,9 +24,9 @@ struct Memory {
 
 // Read the byte at `addr`. If `addr` is outside the box, return 0.
 //(lab-01, M3): implement in memory.cpp.
-Byte mem_get(const Memory& mem, std::size_t addr);
+Byte mem_get(const Memory &mem, std::size_t addr);
 
 // Write `value` at `addr`. Return false (and change nothing) if `addr` is
 // outside the box. Returning false is how main.cpp knows to print a message.
 //(lab-01, M3): implement in memory.cpp.
-bool mem_set(Memory& mem, std::size_t addr, Byte value);
+bool mem_set(Memory &mem, std::size_t addr, Byte value);
