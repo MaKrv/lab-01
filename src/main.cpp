@@ -35,6 +35,9 @@ static void print_help() {
               << "  set <addr> <val>  write one byte (dec or 0x hex)\n"
               << "  help              this list\n"
               << "  inc <addr>        increment one byte\n"
+              << "  step              execute one CPU instruction\n"
+              << "  regs              show CPU registers\n"
+              << "  run               execute until HALT\n"
               << "  quit              leave\n";
 }
 
@@ -111,6 +114,18 @@ int main() {
             dump_regs(cpu);
         } else if (cmd == "step") {
             step(cpu);
+        } else if (cmd == "run") {
+            const int MAX_STEPS = 10000;
+            int steps = 0;
+
+            while (!cpu.halted && steps < MAX_STEPS) {
+                step(cpu);
+                steps++;
+            }
+
+            if (!cpu.halted) {
+                std::cout << "Run stopped: step limit reached.\n";
+            }
         } else if (cmd == "inc") {
             std::string a;
             long addr = 0;

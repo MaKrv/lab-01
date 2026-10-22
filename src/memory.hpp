@@ -30,3 +30,5 @@ Byte mem_get(const Memory &mem, std::size_t addr);
 // outside the box. Returning false is how main.cpp knows to print a message.
 //(lab-01, M3): implement in memory.cpp.
 bool mem_set(Memory &mem, std::size_t addr, Byte value);
+std::uint16_t get16(const Memory &mem, std::size_t addr);
+bool set16(Memory &mem, std::size_t addr, std::uint16_t value);

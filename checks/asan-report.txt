@@ -1,0 +1,49 @@
+=================================================================
+==3491==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x6fd528bf1040 at pc 0x5a56143c747e bp 0x7ffc0f90af90 sp 0x7ffc0f90af80
+READ of size 1 at 0x6fd528bf1040 thread T0
+    #0 0x5a56143c747d in main checks/asan_test.cpp:10
+    #1 0x73d52a62a600  (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a600) (BuildId: 066527e430a32768d82741e00b81eebb1a872294)
+    #2 0x73d52a62a717 in __libc_start_main (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a717) (BuildId: 066527e430a32768d82741e00b81eebb1a872294)
+    #3 0x5a56143c7204 in _start (/home/mk/pf/ember/checks/asan_test+0x1204) (BuildId: 80ba935443ab0e2af1fceb8bfeb3316e6100da11)
+
+Address 0x6fd528bf1040 is located in stack of thread T0 at offset 4160 in frame
+    #0 0x5a56143c72d8 in main checks/asan_test.cpp:4
+
+  This frame has 2 object(s):
+    [48, 49) 'value' (line 10)
+    [64, 4160) 'mem' (line 5) <== Memory access at offset 4160 overflows this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-buffer-overflow checks/asan_test.cpp:10 in main
+Shadow bytes around the buggy address:
+  0x6fd528bf0d80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x6fd528bf0e00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x6fd528bf0e80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x6fd528bf0f00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x6fd528bf0f80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x6fd528bf1000: 00 00 00 00 00 00 00 00[f3]f3 f3 f3 f3 f3 f3 f3
+  0x6fd528bf1080: f3 f3 f3 f3 f3 f3 f3 f3 f3 f3 f3 f3 f3 f3 f3 f3
+  0x6fd528bf1100: f3 f3 f3 f3 f3 f3 f3 f3 f3 f3 f3 f3 f3 f3 f3 f3
+  0x6fd528bf1180: f3 f3 f3 f3 f3 f3 f3 f3 f3 f3 f3 f3 f3 f3 f3 f3
+  0x6fd528bf1200: f3 f3 f3 f3 f3 f3 f3 f3 f3 f3 f3 f3 f3 f3 f3 f3
+  0x6fd528bf1280: f3 f3 f3 f3 f3 f3 f3 f3 f3 f3 f3 f3 f3 f3 f3 f3
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==3491==ABORTING

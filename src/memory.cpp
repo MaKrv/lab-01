@@ -28,3 +28,21 @@ bool mem_set(Memory &mem, std::size_t addr, Byte value) {
         return true;
     }
 }
+// ДАНО. Прочитати два байти як одне 16-бітне значення, молодший перший.
+std::uint16_t get16(const Memory &mem, std::size_t addr) {
+    Byte lo = mem_get(mem, addr);
+    Byte hi = mem_get(mem, addr + 1);
+    return (std::uint16_t)(lo | (hi << 8));
+}
+
+bool set16(Memory &mem, std::size_t addr, std::uint16_t value) {
+    if (addr >= MEM_SIZE - 1) {
+        return false;
+    } else {
+        Byte lo = value & 0xFF;
+        Byte hi = value >> 8;
+        mem_set(mem, addr, lo);
+        mem_set(mem, addr + 1, hi);
+        return true;
+    }
+}
